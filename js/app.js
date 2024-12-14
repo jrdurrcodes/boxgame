@@ -3,6 +3,7 @@ class Game {
         this.countDisplay = document.getElementById('countDisplay')
         this.gameBoard = document.getElementById('gameBoard')
         this.count = 0
+
         this.colors = [
             'red', 'blue', 'yellow', 'green', 'purple', 'orange', 'brown', 'gray', 'pink',
         ]
@@ -27,6 +28,8 @@ class Game {
             {
                 id : 5,
                 color: 'purple'
+
+
             },
             {
                 id : 6,
@@ -68,7 +71,7 @@ class Game {
     }
     handleClick(item) {
         item.addEventListener('click', ()=>{
-            console.log(item.style.backgroundColor)
+            //console.log(item.style.backgroundColor)
             this.changeColor(item, this.getRandomColor())
             this.getCount()
         })
@@ -77,9 +80,19 @@ class Game {
     getRandomColor() {
         const idx = Math.floor(Math.random() * this.colors.length)
         const randonColor = this.colors[idx]
-        console.log(randonColor)
+       // console.log(randonColor)
         return randonColor
     }
+
+    changeColor(el, rand) {
+        el.style.backgroundColor = rand
+    }
+
+        getCount() {
+            this.count++
+
+            this.countDisplay.innerText = this.count()
+        }
 }
 const action = new Game()
 action.init()
